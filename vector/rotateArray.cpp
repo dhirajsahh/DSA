@@ -32,6 +32,7 @@ int main()
     v.push_back(2);
     int k = 3;
     int n = v.size();
+    k = k % n;
     reversePart(n - k, n - 1, v);
     reversePart(0, n - k - 1, v);
     reversePart(0, n - 1, v);
