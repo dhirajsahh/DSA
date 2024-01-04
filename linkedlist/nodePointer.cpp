@@ -11,13 +11,25 @@ public:
         this->next = NULL;
     }
 };
- void display(Node* head){
-    Node* temp=head;
-    while(temp!=NULL){
-        cout<<temp->val<<endl;
-        temp=temp->next;
+void display(Node *head)
+{
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->val << " ";
+        temp = temp->next;
     }
- }
+    cout<<endl;
+}
+void insertAtTail(Node *head, int val)
+{
+    Node *t = new Node(val);
+    while (head->next != NULL)
+    {
+        head = head->next;
+    }
+    head->next = t;
+}
 int main()
 {
     Node *a = new Node(10);
@@ -28,14 +40,15 @@ int main()
     b->next = c;
     c->next = d;
     display(a);
-    // cout << a->next->val << endl;
-    // cout << a->next->next->val << endl;
-    // cout << a->next->next->next->val << endl;
-    // Node *temp = a;
-    // while (temp != NULL)
-    // {
-    //     cout << temp->val << " ";
-    //     temp = temp->next;
-    // }
-
+    insertAtTail(a, 50);
+    display(a);
 }
+// cout << a->next->val << endl;
+// cout << a->next->next->val << endl;
+// cout << a->next->next->next->val << endl;
+// Node *temp = a;
+// while (temp != NULL)
+// {
+//     cout << temp->val << " ";
+//     temp = temp->next;
+// }
