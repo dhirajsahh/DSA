@@ -100,6 +100,56 @@ public:
             return temp->val;
         }
     }
+    void deleteAtHead()
+    {
+        if (size == 0)
+        {
+            cout << "Your list is empty" << endl;
+            return;
+        }
+        else
+        {
+            head = head->next;
+            size--;
+        }
+    }
+    void deleteAtTail()
+    {
+        if (size == 0)
+        {
+            cout << "Your list is empty" << endl;
+            return;
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp->next!= tail)
+            {
+                temp = temp->next;
+            }
+            temp->next = NULL;
+            tail = temp;
+            size--;
+        }
+    }
+    void deleteAtIdx(int idx){
+        if(idx<0 ||idx>size-1){
+            cout<<"Invalid index";
+            return;
+        }
+        else if(idx==0) deleteAtHead();
+        else if(idx=size-1) deleteAtTail();
+        else {
+            Node *temp=head;
+            for (int i=1;i<=idx;i++){
+                temp=temp->next;
+            }
+            temp->next=temp->next->next;
+            size--;
+        }
+    }
+    
+
 };
 int main()
 {
@@ -120,4 +170,11 @@ int main()
     cout << ll.getElement(5) << endl;
     cout << ll.getElement(0) << endl;
     cout << ll.getElement(3) << endl;
+    ll.deleteAtHead();
+    ll.display();
+    ll.deleteAtHead();
+    ll.display();
+    cout<<ll.size<<endl;
+    ll.deleteAtIdx(1);
+    ll.display();
 }
